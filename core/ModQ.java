@@ -18,7 +18,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="ModQ",name="ModQ",version="0.0.5")
+@Mod(modid="ModQ",name="ModQ",version="0.0.6")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public class ModQ {
 	@Instance("ModQ")
@@ -29,7 +29,7 @@ public class ModQ {
 	
 	final public static int ITEM_CRYSTAL_PIECE = 10001;
 	
-	public static Block block_Q=new BlockQ(500);
+	public static Block block_Q=new BlockQ(500,0,Material.air);
 	public static Block block_crystal=new BlockCrystal(502,17,Material.iron);
 	
 	public static Item item_haMaker=new HaMaker(10000);
@@ -56,7 +56,7 @@ public class ModQ {
 		} );
 		
 
-		ModLoader.addName(item_haMaker, "¹þÖÆÔìÕß");
+		ModLoader.addName(item_haMaker, "¹þ");
 		ModLoader.addRecipe(new ItemStack(item_haMaker),new Object[]{
 			"a",
 			"b",

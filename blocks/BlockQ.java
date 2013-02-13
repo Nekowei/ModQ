@@ -7,8 +7,8 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockQ extends Block{
 
-	public BlockQ(int par1) {
-		super(par1,Material.glass);
+	public BlockQ(int par1,int par2,Material material) {
+		super(par1,par2,material);
 		
 		setBlockName("block_Q");
 		setCreativeTab(CreativeTabs.tabBlock);
