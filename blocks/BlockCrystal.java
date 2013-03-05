@@ -15,12 +15,12 @@ import proxy.ClientProxy;
 
 public class BlockCrystal extends BlockFlower {
 	public BlockCrystal(int par1, int par2,Material material) {
-		super(par1, par2,material); // ×ó±ßµÚ¶ş¸ö²ÎÊıÊÇÍ¼±êµÄĞòºÅ 
+		super(par1, par2,material); // å·¦è¾¹ç¬¬äºŒä¸ªå‚æ•°æ˜¯å›¾æ ‡çš„åºå· 
 
 		setBlockName("block_crystal");
 		setTextureFile(ClientProxy.BLOCK_PATH);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setStepSound(Block.soundGlassFootstep); // <---- ÉèÖÃ°Ú·ÅÊ±µÄÒôĞ§
+		setStepSound(Block.soundGlassFootstep); // <---- è®¾ç½®æ‘†æ”¾æ—¶çš„éŸ³æ•ˆ
 		setHardness(15.0F);
 		setResistance(100.0F);
 		setLightValue(1);

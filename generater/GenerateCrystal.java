@@ -23,20 +23,20 @@ public class GenerateCrystal implements IWorldGenerator {
 	}
 
 	private void generateSurface(World world, Random rand, int block_x, int block_z) {
-		// 这里是日常世界
-		if (rand.nextInt(2) != 0) return; // 1/2 几率，是否在本块刷新
+
+		if (rand.nextInt(2) != 0) return; 
 
 		int x = block_x + rand.nextInt(16);
 		int z = block_z + rand.nextInt(16);
 		int y = rand.nextInt(128);
 
-		for (int i = 0; i < 16; ++i) { // 最多刷新16个
+		for (int i = 0; i < 16; ++i) { 
 			int set_x = x + rand.nextInt(8) - rand.nextInt(8);
 			int set_y = y + rand.nextInt(4) - rand.nextInt(4);
 			int set_z = z + rand.nextInt(8) - rand.nextInt(8);
 
 			if (world.isAirBlock(set_x, set_y, set_z)
-					&& ModQ.block_crystal.canBlockStay(world, set_x, set_y, set_z)) { // 这里 y 不用减 1
+					&& ModQ.block_crystal.canBlockStay(world, set_x, set_y, set_z)) { 
 				world.setBlock(set_x, set_y, set_z, ModQ.block_crystal.blockID);
 			}
 		}
@@ -44,6 +44,6 @@ public class GenerateCrystal implements IWorldGenerator {
 
 	@SuppressWarnings("unused")
 	private void generateNether(World world, Random rand, int block_x, int block_z) {
-		// 这里是地狱
+		
 	}
 }
