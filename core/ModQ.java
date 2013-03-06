@@ -21,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="ModQ",name="ModQ",version="0.0.7")
+@Mod(modid="ModQ",name="ModQ",version="0.0.8")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public class ModQ {
 	@Instance("ModQ")
@@ -32,24 +32,28 @@ public class ModQ {
 	
 	final public static int ITEM_CRYSTAL_PIECE = 10001;
 	
-	public static Block block_Q;
-	public static Block block_crystal;
+	public static Block block_Q=new BlockQ(666,0,Material.air);
+	public static Block block_crystal = new BlockCrystal(667,17,Material.iron);
+	public static Block block_crystal_glass=new BlockCrystalGlass(668,19,Material.glass,false);
+	public static Block block_crystal_pane=new BlockCrystalPane(669,19,19,Material.glass,false);
 	
-	public static Item item_haMaker;
-	public static Item item_crystal_piece;
+	public static Item item_haMaker = new HaMaker(10000);
+	public static Item item_crystal_piece = new CrystalPiece(10001);
 	
-	@PreInit
-	public void pre_init(FMLPreInitializationEvent event){
-		Configuration config= new Configuration(event.getSuggestedConfigurationFile());
-		config.load();
+//	@PreInit
+//	public void pre_init(FMLPreInitializationEvent event){
+//		Configuration config= new Configuration(event.getSuggestedConfigurationFile());
+//		config.load();
 		
-		block_Q=new BlockQ(config.getBlock("block_Q", 500).getInt(),0,Material.air);
-		block_crystal=new BlockCrystal(config.getBlock("block_crystal",502).getInt(),17,Material.iron);
+//		block_Q = new BlockQ(config.getBlock("block_Q", 5000).getInt(),0,Material.air);
+//		block_crystal = new BlockCrystal(config.getBlock("block_crystal",5002).getInt(),17,Material.iron);
+//		block_crystal_glass = new BlockCrystalGlass(config.getBlock("block_crystal_glass",5003).getInt(),18,Material.glass,false);
+//		block_crystal_pane = new BlockCrystalPane(config.getBlock("block_crystal_glass",5004).getInt(),19,19,Material.glass,false); 
 		
-		item_haMaker=new HaMaker(config.getItem("item_haMaker",10000).getInt());
-		item_crystal_piece=new CrystalPiece(config.getItem("item_crystal_piece",10001).getInt());
-		config.save();
-	}
+//		item_haMaker = new HaMaker(config.getItem("item_haMaker",10000).getInt());
+//		item_crystal_piece = new CrystalPiece(config.getItem("item_crystal_piece",10001).getInt());
+//		config.save();
+//	}
 	
 	@Init
 	public void init(FMLInitializationEvent event){
@@ -57,22 +61,28 @@ public class ModQ {
 		
 
 		ModLoader.registerBlock(block_Q);
-		ModLoader.addName(block_Q, "I了个Q~");
-		
+		ModLoader.addName(block_Q, "I了个Q~");		
 
 		ModLoader.registerBlock(block_crystal);
 		ModLoader.addName(block_crystal, "水晶");
 		MinecraftForge.setBlockHarvestLevel(block_crystal, "pickaxe", 2);
-		ModLoader.addRecipe(new ItemStack(block_crystal),new Object[]{
-			"a,a",
-			"a,a",
+		GameRegistry.addRecipe(new ItemStack(block_crystal),new Object[]{
+			"aa",
+			"b",
 			"",
-			Character.valueOf('a'),item_crystal_piece,
+			Character.valueOf('a'),Item.bed,
+			Character.valueOf('b'),Item.bone,
 		} );
+		
+		ModLoader.registerBlock(block_crystal_glass);
+		ModLoader.addName(block_crystal_glass, "水晶玻璃");
+		
+		ModLoader.registerBlock(block_crystal_pane);
+		ModLoader.addName(block_crystal_pane, "水晶玻璃片");
 		
 
 		ModLoader.addName(item_haMaker, "哈");
-		ModLoader.addRecipe(new ItemStack(item_haMaker),new Object[]{
+		GameRegistry.addRecipe(new ItemStack(item_haMaker),new Object[]{
 			"a",
 			"b",
 			"c",

@@ -11,8 +11,6 @@ import net.minecraft.util.MathHelper;
 import core.ModQ;
 import proxy.ClientProxy;
 
-
-
 public class BlockCrystal extends BlockFlower {
 	public BlockCrystal(int par1, int par2,Material material) {
 		super(par1, par2,material); // 左边第二个参数是图标的序号 
@@ -23,7 +21,7 @@ public class BlockCrystal extends BlockFlower {
 		setStepSound(Block.soundGlassFootstep); // <---- 设置摆放时的音效
 		setHardness(15.0F);
 		setResistance(100.0F);
-		setLightValue(1);
+		setLightValue(1.0F);
 	
 	}
 
