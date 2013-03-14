@@ -21,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="ModQ",name="ModQ",version="0.0.8")
+@Mod(modid="ModQ",name="ModQ",version="0.0.9")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public class ModQ {
 	@Instance("ModQ")
@@ -66,12 +66,11 @@ public class ModQ {
 		ModLoader.registerBlock(block_crystal);
 		ModLoader.addName(block_crystal, "水晶");
 		MinecraftForge.setBlockHarvestLevel(block_crystal, "pickaxe", 2);
-		GameRegistry.addRecipe(new ItemStack(block_crystal),new Object[]{
-			"aa",
-			"b",
+		GameRegistry.addRecipe(new ItemStack(block_crystal,16),new Object[]{
+			"a",
+			"a",
 			"",
-			Character.valueOf('a'),Item.bed,
-			Character.valueOf('b'),Item.bone,
+			Character.valueOf('a'),item_crystal_piece
 		} );
 		
 		ModLoader.registerBlock(block_crystal_glass);
@@ -79,6 +78,12 @@ public class ModQ {
 		
 		ModLoader.registerBlock(block_crystal_pane);
 		ModLoader.addName(block_crystal_pane, "水晶玻璃片");
+		ModLoader.addRecipe(new ItemStack(block_crystal_pane,12), new Object[]{
+			"aa",
+			"aa",
+			"",
+			Character.valueOf('a'),block_crystal_glass
+		});
 		
 
 		ModLoader.addName(item_haMaker, "哈");
@@ -88,7 +93,7 @@ public class ModQ {
 			"c",
 			Character.valueOf('a'),Item.appleGold,
 			Character.valueOf('b'),Item.bone,
-			Character.valueOf('c'),Item.book,
+			Character.valueOf('c'),Item.book
 		} );
 	
 		ModLoader.addName(item_crystal_piece, "水晶碎片");
