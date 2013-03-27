@@ -21,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="ModQ",name="ModQ",version="0.0.9")
+@Mod(modid="ModQ",name="ModQ",version="0.1.1")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public class ModQ {
 	@Instance("ModQ")
@@ -29,9 +29,7 @@ public class ModQ {
 	
 	@SidedProxy(clientSide="proxy.ClientProxy",serverSide="proxy.Proxy")
 	public static Proxy proxy;
-	
-	final public static int ITEM_CRYSTAL_PIECE = 10001;
-	
+		
 	public static Block block_Q=new BlockQ(666,0,Material.air);
 	public static Block block_crystal = new BlockCrystal(667,17,Material.iron);
 	public static Block block_crystal_glass=new BlockCrystalGlass(668,19,Material.glass,false);

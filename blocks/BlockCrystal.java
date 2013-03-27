@@ -55,7 +55,7 @@ public class BlockCrystal extends BlockFlower {
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return ModQ.ITEM_CRYSTAL_PIECE+256;
+        return ModQ.item_crystal_piece.itemID;
     }
 
 }

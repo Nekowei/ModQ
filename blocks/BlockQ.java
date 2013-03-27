@@ -14,6 +14,6 @@ public class BlockQ extends Block{
 		setCreativeTab(CreativeTabs.tabBlock);
 		setTextureFile(ClientProxy.BLOCK_PATH);
 	}
-
+	
 
 }
