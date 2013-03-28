@@ -21,7 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid="ModQ",name="ModQ",version="0.1.1")
+@Mod(modid="ModQ",name="ModQ",version="0.1.2")
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
 public class ModQ {
 	@Instance("ModQ")
@@ -30,13 +30,13 @@ public class ModQ {
 	@SidedProxy(clientSide="proxy.ClientProxy",serverSide="proxy.Proxy")
 	public static Proxy proxy;
 		
-	public static Block block_Q=new BlockQ(666,0,Material.air);
-	public static Block block_crystal = new BlockCrystal(667,17,Material.iron);
-	public static Block block_crystal_glass=new BlockCrystalGlass(668,19,Material.glass,false);
-	public static Block block_crystal_pane=new BlockCrystalPane(669,19,19,Material.glass,false);
+	public static Block blockQ=new BlockQ(666,0,Material.air);
+	public static Block blockCrystal = new BlockCrystal(667,17,Material.iron);
+	public static Block blockCrystalGlass=new BlockCrystalGlass(668,19,Material.glass,false);
+	public static Block blockCrystalPane=new BlockCrystalPane(669,19,19,Material.glass,false);
 	
-	public static Item item_haMaker = new HaMaker(10000);
-	public static Item item_crystal_piece = new CrystalPiece(10001);
+	public static Item haMaker = new HaMaker(10000);
+	public static Item crystalPiece = new CrystalPiece(10001);
 	
 //	@PreInit
 //	public void pre_init(FMLPreInitializationEvent event){
@@ -58,43 +58,47 @@ public class ModQ {
 		proxy.init();
 		
 
-		ModLoader.registerBlock(block_Q);
-		ModLoader.addName(block_Q, "I了个Q~");		
+		ModLoader.registerBlock(blockQ);
+		ModLoader.addName(blockQ, "I了个Q~");		
+		GameRegistry.addRecipe(new ItemStack(blockQ,6),new Object[]{
+			"a",
+			"b",
+			Character.valueOf('a'),ModQ.blockCrystalGlass,
+			Character.valueOf('b'),ModQ.crystalPiece,
+		} );
 
-		ModLoader.registerBlock(block_crystal);
-		ModLoader.addName(block_crystal, "水晶");
-		MinecraftForge.setBlockHarvestLevel(block_crystal, "pickaxe", 2);
-		GameRegistry.addRecipe(new ItemStack(block_crystal,16),new Object[]{
+		ModLoader.registerBlock(blockCrystal);
+		ModLoader.addName(blockCrystal, "水晶");
+		MinecraftForge.setBlockHarvestLevel(blockCrystal, "pickaxe", 2);
+		GameRegistry.addRecipe(new ItemStack(blockCrystal),new Object[]{
 			"a",
 			"a",
-			"",
-			Character.valueOf('a'),item_crystal_piece
+			"a",
+			Character.valueOf('a'),ModQ.crystalPiece
+		} );
+
+		ModLoader.registerBlock(blockCrystalPane);
+		ModLoader.addName(blockCrystalPane, "水晶玻璃片");
+		GameRegistry.addRecipe(new ItemStack(blockCrystalPane,12), new Object[]{
+			"aa",
+			"aa",
+			Character.valueOf('a'),ModQ.blockCrystalGlass
 		} );
 		
-		ModLoader.registerBlock(block_crystal_glass);
-		ModLoader.addName(block_crystal_glass, "水晶玻璃");
-		
-		ModLoader.registerBlock(block_crystal_pane);
-		ModLoader.addName(block_crystal_pane, "水晶玻璃片");
-		ModLoader.addRecipe(new ItemStack(block_crystal_pane,12), new Object[]{
-			"aa",
-			"aa",
-			"",
-			Character.valueOf('a'),block_crystal_glass
-		});
-		
-
-		ModLoader.addName(item_haMaker, "哈");
-		GameRegistry.addRecipe(new ItemStack(item_haMaker),new Object[]{
+		ModLoader.registerBlock(blockCrystalGlass);
+		ModLoader.addName(blockCrystalGlass, "水晶玻璃");
+	
+		ModLoader.addName(haMaker, "哈");
+		GameRegistry.addRecipe(new ItemStack(haMaker),new Object[]{
 			"a",
 			"b",
 			"c",
-			Character.valueOf('a'),Item.appleGold,
-			Character.valueOf('b'),Item.bone,
+			Character.valueOf('a'),ModQ.blockCrystalGlass,
+			Character.valueOf('b'),ModQ.crystalPiece,
 			Character.valueOf('c'),Item.book
 		} );
 	
-		ModLoader.addName(item_crystal_piece, "水晶碎片");
+		ModLoader.addName(crystalPiece, "水晶碎片");
 
 		
 		

@@ -101,7 +101,7 @@ public class HaMaker extends Item{
 				if (blocksetter=="pumpkinLantern")
 				world.setBlock(x, y1, z, Block.pumpkinLantern.blockID);				
 				if (blocksetter=="blockHa")
-					world.setBlock(x, y1, z, ModQ.block_Q.blockID);
+					world.setBlock(x, y1, z, ModQ.blockQ.blockID);
 			}
 		}
 	}		

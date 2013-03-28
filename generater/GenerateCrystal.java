@@ -36,8 +36,8 @@ public class GenerateCrystal implements IWorldGenerator {
 			int set_z = z + rand.nextInt(8) - rand.nextInt(8);
 
 			if (world.isAirBlock(set_x, set_y, set_z)
-					&& ModQ.block_crystal.canBlockStay(world, set_x, set_y, set_z)) { 
-				world.setBlock(set_x, set_y, set_z, ModQ.block_crystal.blockID);
+					&& ModQ.blockCrystal.canBlockStay(world, set_x, set_y, set_z)) { 
+				world.setBlock(set_x, set_y, set_z, ModQ.blockCrystal.blockID);
 			}
 		}
 	}
